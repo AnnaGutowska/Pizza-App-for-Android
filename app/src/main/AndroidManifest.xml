@@ -9,6 +9,18 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.PizzaApp">
+        <activity android:name=".StoreOrdersActivity"
+                  android:label="Store Orders"
+                  android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".CurrentOrderActivity"
+                  android:label="Current Order"
+                  android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".PizzaCustomizationActivity"
+                  android:label="Customize Pizza"
+                  android:parentActivityName=".MainActivity">
+        </activity>
         <activity android:name=".MainActivity"
                   android:exported="true">
             <intent-filter>
