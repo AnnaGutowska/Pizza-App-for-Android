@@ -1,8 +1,8 @@
-package com.example.pizzaapp;
+package com.example.pizzaapp.backend;
 
 import java.util.ArrayList;
 
-import static com.example.pizzaapp.Size.*;
+import com.example.pizzaapp.backend.Size.*;
 
 /**
  The Pepperoni class is a child class of the parent, Pizza class. This class contains the functionalities for a
@@ -104,11 +104,11 @@ public class Pepperoni extends Pizza{
 
         }
 
-        if ( this.getSize() == small ) {
+        if ( this.getSize() == Size.small ) {
             total = (BASE_PRICE + (SMALL * SIZE_INCREASE) + (EXTRA_TOPPINGS_PRICE * numberOfExcessToppings));
-        } else if (this.getSize() == medium) {
+        } else if (this.getSize() == Size.medium) {
             total = (BASE_PRICE + (MEDIUM * SIZE_INCREASE) + (EXTRA_TOPPINGS_PRICE * numberOfExcessToppings));
-        } else if (this.getSize() == large) {
+        } else if (this.getSize() == Size.large) {
             total = (BASE_PRICE + (LARGE * SIZE_INCREASE) + (EXTRA_TOPPINGS_PRICE * numberOfExcessToppings));
         }
         setSalesTax(total);

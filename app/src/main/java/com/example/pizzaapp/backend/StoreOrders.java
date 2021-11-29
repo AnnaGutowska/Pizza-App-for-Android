@@ -1,8 +1,5 @@
-package com.example.pizzaapp;
+package com.example.pizzaapp.backend;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +7,7 @@ import java.util.ArrayList;
  their total, as well as exporting the order into a textfile
  * @author Abia Mallick, Anna Gutowska
  */
-public class StoreOrders implements Customizable{
+public class StoreOrders implements Customizable {
 
     private final ArrayList<Order> orders = new ArrayList<>();
     private final double SALES_TAX_SUM = 1.06625;

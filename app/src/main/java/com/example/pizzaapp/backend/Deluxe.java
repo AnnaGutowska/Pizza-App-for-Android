@@ -1,8 +1,8 @@
-package com.example.pizzaapp;
+package com.example.pizzaapp.backend;
 
 import java.util.ArrayList;
 
-import static com.example.pizzaapp.Size.*;
+import com.example.pizzaapp.backend.Size.*;
 
 /**
  The Deluxe class is a child class of the parent, Pizza class. This class contains the functionalities for a deluxe
@@ -122,11 +122,11 @@ public class Deluxe extends Pizza  {
 
         double total = 0;
 
-        if (this.getSize() == small) {
+        if (this.getSize() == Size.small) {
             total = SMALL * SIZE_INCREASE;
-        } else if (this.getSize() == medium) {
+        } else if (this.getSize() == Size.medium) {
             total = MEDIUM * SIZE_INCREASE;
-        } else if (this.getSize() == large) {
+        } else if (this.getSize() == Size.large) {
             total = LARGE * SIZE_INCREASE;
         }
 

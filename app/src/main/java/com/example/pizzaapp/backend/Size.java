@@ -1,4 +1,4 @@
-package com.example.pizzaapp;
+package com.example.pizzaapp.backend;
 
 /**
  The Size class contains the  enum type which is a special data type that
