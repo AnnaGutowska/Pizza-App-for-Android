@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <CheckBox
+            android:text="@string/pepperoni_topping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/checkBoxPepperoni"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="172dp"
+            android:layout_marginStart="172dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="352dp"/>
+    <CheckBox
+            android:text="@string/onion_topping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/checkBoxOnion"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="172dp"
+            android:layout_marginStart="172dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="256dp"/>
+    <CheckBox
+            android:text="@string/black_olives_topping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/checkBoxBlackOlives"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="172dp"
+            android:layout_marginStart="172dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="164dp"/>
+    <CheckBox
+            android:text="@string/pineapple_topping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/checkBoxPineapple"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="172dp"
+            android:layout_marginStart="172dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="304dp"/>
+    <CheckBox
+            android:text="@string/mushroom_topping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/checkBoxMushroom"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="208dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="172dp" android:layout_marginStart="172dp"/>
+    <CheckBox
+            android:text="@string/sausage_topping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/checkBoxSausage"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="164dp"/>
+    <CheckBox
+            android:text="@string/ham_topping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/checkBoxHam"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="400dp"/>
+    <CheckBox
+            android:text="@string/cheese_topping"
+            android:layout_width="88dp"
+            android:layout_height="48dp" android:id="@+id/checkBoxCheese"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="304dp"/>
+    <CheckBox
+            android:text="@string/green_pepper_topping"
+            android:layout_width="126dp"
+            android:layout_height="48dp" android:id="@+id/checkBoxGreenPepper"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="352dp"/>
+    <CheckBox
+            android:text="@string/beef_topping"
+            android:layout_width="68dp"
+            android:layout_height="47dp" android:id="@+id/checkBoxBeef"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="260dp"/>
+    <CheckBox
+            android:text="@string/chicken_topping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/checkBoxChicken"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="212dp"/>
+    <TextView
+            android:text="@string/select_toppings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="124dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="28dp" android:layout_marginStart="28dp" android:textSize="20sp"
+            android:textStyle="bold"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/temporary"
+            android:textSize="24sp" android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="57dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="39dp"
+            android:layout_marginStart="39dp"/>
+    <ImageView
+            android:layout_width="122dp"
+            android:layout_height="143dp" app:srcCompat="@drawable/deluxepic" android:id="@+id/pizzaPhoto"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="21dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="266dp" android:layout_marginStart="266dp"
+            android:contentDescription="@string/display"/>
+    <TextView
+            android:text="@string/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textViewTotalTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="440dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="184dp" android:layout_marginStart="184dp" android:textSize="16sp"/>
+    <TextView
+            android:layout_width="101dp"
+            android:layout_height="24dp" android:id="@+id/textViewTotal"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="437dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="241dp" android:layout_marginStart="241dp"/>
+    <Button
+            android:text="@string/add_to_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/buttonAddToOrder"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="475dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="212dp" android:layout_marginStart="212dp"/>
+    <TextView
+            android:text="@string/size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textViewSize"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="472dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="28dp" android:layout_marginStart="28dp" android:textSize="16sp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
