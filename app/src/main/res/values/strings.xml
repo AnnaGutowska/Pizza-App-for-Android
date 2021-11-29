@@ -6,7 +6,39 @@
     <string name="hawaiian">Order a Hawaiian Pizza</string>
     <string name="current_order">Current Order</string>
     <string name="store_orders">Store Orders</string>
+
     <string name="select_toppings">Select Desired Toppings</string>
+    <string name="sausage_topping">Sausage</string>
+    <string name="green_pepper_topping">Green Pepper</string>
+    <string name="onion_topping">Onion</string>
+    <string name="pepperoni_topping">Pepperoni</string>
+    <string name="mushroom_topping">Mushroom</string>
+    <string name="pineapple_topping">Pineapple</string>
+    <string name="ham_topping">Ham</string>
+    <string name="cheese_topping">Cheese</string>
+    <string name="chicken_topping">Chicken</string>
+    <string name="beef_topping">Beef</string>
+    <string name="black_olives_topping">Black Olives</string>
+
+    <string name="total">Total: $</string>
+    <string name="add_to_order">Add to Order</string>
+    <string name="small">small</string>
+    <string name="medium">medium</string>
+    <string name="large">large</string>
+    <string name="size">Size</string>
+    <string name="display">Displays the selected pizza type</string>
+
+    <string-array name="size_array">
+        <item>small</item>
+        <item>medium</item>
+        <item>large</item>
+    </string-array>
+
+
+
+
+
+
 
 
 

@@ -12,7 +12,7 @@ import com.example.pizzaapp.backend.StoreOrders;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private StoreOrders storeOrders;
     private Order order;
@@ -30,22 +30,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         storeOrders = new StoreOrders();
         order = new Order(null);
-        buttonDeluxe = findViewById(R.id.imageButtonDeluxe);
-        buttonDeluxe.setOnClickListener(this);
-        buttonHawaiian = findViewById(R.id.imageButtonHawaiian);
-        buttonHawaiian.setOnClickListener(this);
-        buttonPepperoni = findViewById(R.id.imageButtonPepperoni);
-        buttonPepperoni.setOnClickListener(this);
         buttonCurrentOrder =  findViewById(R.id.imageButtonCurrentOrder);
         buttonStoreOrders = findViewById(R.id.imageButtonStoreOrders);
+        buttonDeluxe = findViewById(R.id.imageButtonDeluxe);
+        buttonDeluxe.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, PizzaCustomizationActivity.class);
+            intent.putExtra("message", "Deluxe Pizza");
+            startActivity(intent);
+        });
+        buttonHawaiian = findViewById(R.id.imageButtonHawaiian);
+        buttonHawaiian.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, PizzaCustomizationActivity.class);
+            intent.putExtra("message", "Hawaiian Pizza");
+            startActivity(intent);
+        });
+        buttonPepperoni = findViewById(R.id.imageButtonPepperoni);
+        buttonPepperoni.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, PizzaCustomizationActivity.class);
+            intent.putExtra("message", "Pepperoni Pizza");
+            startActivity(intent);
+        });
     }
 
-
-     @Override
-     public void onClick(View v) {
-        Intent intent = new Intent(MainActivity.this, PizzaCustomizationActivity.class);
-        startActivity(intent);
-    }
 
     public void onClickStoreOrders(View v){
         Intent intent = new Intent( this, StoreOrdersActivity.class );
