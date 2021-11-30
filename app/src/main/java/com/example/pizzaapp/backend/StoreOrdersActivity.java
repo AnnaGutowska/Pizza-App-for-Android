@@ -1,9 +1,10 @@
-package com.example.pizzaapp;
+package com.example.pizzaapp.backend;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.pizzaapp.R;
 import com.example.pizzaapp.backend.StoreOrders;
 
 public class StoreOrdersActivity extends AppCompatActivity {

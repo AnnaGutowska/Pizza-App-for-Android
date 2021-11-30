@@ -1,27 +1,27 @@
-package com.example.pizzaapp;
+package com.example.pizzaapp.backend;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.pizzaapp.backend.Order;
-import com.example.pizzaapp.backend.StoreOrders;
+import com.example.pizzaapp.R;
+
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    private StoreOrders storeOrders;
-    private Order order;
-    protected static Set phoneNumbersSet = new LinkedHashSet();
     private ImageButton buttonDeluxe;
     private ImageButton buttonHawaiian;
     private ImageButton buttonPepperoni;
     private ImageButton buttonCurrentOrder;
     private ImageButton buttonStoreOrders;
+    StoreOrders storeOrders = new StoreOrders();
+    Order order = new Order(null);
+    private final Set phoneNumbersSet = new LinkedHashSet();
+
 
 
     @Override
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     public void onClickStoreOrders(View v){
         Intent intent = new Intent( this, StoreOrdersActivity.class );
         startActivity(intent);
@@ -62,4 +63,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent( this, CurrentOrderActivity.class );
         startActivity(intent);
     }
+
+
 }

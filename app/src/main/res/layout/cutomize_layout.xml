@@ -36,7 +36,7 @@
     <CheckBox
             android:text="@string/mushroom_topping"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/checkBoxMushroom"
+            android:layout_height="wrap_content" android:id="@+id/mushroom"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="208dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="172dp" android:layout_marginStart="172dp"/>
@@ -116,7 +116,8 @@
             android:layout_height="24dp" android:id="@+id/textViewTotal"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="437dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="241dp" android:layout_marginStart="241dp"/>
+            android:layout_marginLeft="241dp" android:layout_marginStart="241dp" android:textSize="16sp"
+            android:textColor="#3F51B5"/>
     <Button
             android:text="@string/add_to_order"
             android:layout_width="wrap_content"
@@ -131,4 +132,10 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="472dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="28dp" android:layout_marginStart="28dp" android:textSize="16sp"/>
+    <Spinner
+            android:layout_width="128dp"
+            android:layout_height="34dp" android:id="@+id/spinnerSize"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="493dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

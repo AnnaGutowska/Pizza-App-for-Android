@@ -10,19 +10,19 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.PizzaApp">
-        <activity android:name=".StoreOrdersActivity"
+        <activity android:name=".backend.StoreOrdersActivity"
                   android:label="Store Orders"
-                  android:parentActivityName=".MainActivity">
+                  android:parentActivityName=".backend.MainActivity">
         </activity>
-        <activity android:name=".CurrentOrderActivity"
+        <activity android:name=".backend.CurrentOrderActivity"
                   android:label="Current Order"
-                  android:parentActivityName=".MainActivity">
+                  android:parentActivityName=".backend.MainActivity">
         </activity>
-        <activity android:name=".PizzaCustomizationActivity"
+        <activity android:name=".backend.PizzaCustomizationActivity"
                   android:label="Customize Pizza"
-                  android:parentActivityName=".MainActivity">
+                  android:parentActivityName=".backend.MainActivity">
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name=".backend.MainActivity"
                   android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
