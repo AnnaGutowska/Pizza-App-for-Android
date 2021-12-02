@@ -204,7 +204,7 @@ public class PizzaCustomizationActivity extends Activity implements AdapterView.
                     setTextBoxPrice();
                     return;
                 }
-                Toast.makeText(PizzaCustomizationActivity.this, "Maximum of 7 toppings are allowed!",
+                Toast.makeText(getApplicationContext(), "Maximum of 7 toppings are allowed!",
                         Toast.LENGTH_LONG).show();
                 cb.setChecked(false);
                 return;
