@@ -1,5 +1,8 @@
 package com.example.pizzaapp.backend;
 
+import android.text.Editable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +11,7 @@ import java.util.ArrayList;
  order as well
  * @author Abia Mallick, Anna Gutowska
  */
-public class Order implements Customizable {
+public class Order implements Customizable , Serializable {
     private String phoneNumber;
     private final ArrayList<Pizza> pizzas = new ArrayList<>();
     private double total;

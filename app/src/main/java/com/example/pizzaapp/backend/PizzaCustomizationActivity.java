@@ -1,6 +1,8 @@
 package com.example.pizzaapp.backend;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -9,7 +11,8 @@ import com.example.pizzaapp.R;
 
 import java.util.ArrayList;
 
-public class PizzaCustomizationActivity extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener{
+public class PizzaCustomizationActivity extends Activity implements AdapterView.OnItemSelectedListener,
+        View.OnClickListener{
 
     TextView temporary;
     ImageView pizzaPhoto;
@@ -27,10 +30,11 @@ public class PizzaCustomizationActivity extends Activity implements AdapterView.
     CheckBox CheckBoxMushroom;
     CheckBox CheckBoxPepperoni;
     TextView textViewTotal;
-    private Pizza pizza = PizzaMaker.createPizza("deluxe");
     private static final int MAX_TOPPINGS = 7;
     ArrayList<Topping> toppings = new ArrayList<>();
     Button addToOrder;
+    private String phoneNumber = "";
+    Pizza pizza;
 
 
 
@@ -38,14 +42,13 @@ public class PizzaCustomizationActivity extends Activity implements AdapterView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cutomize_layout);
+
         temporary = findViewById(R.id.temporary);
         temporary.setText(getIntent().getStringExtra("message"));
         pizzaPhoto = findViewById(R.id.pizzaPhoto);
         textViewTotal = findViewById(R.id.textViewTotal);
         addToOrder = findViewById(R.id.buttonAddToOrder);
         addToOrder.setOnClickListener(this);
-
-
         findToppings();
         setPizzaChoice();
 
@@ -57,7 +60,6 @@ public class PizzaCustomizationActivity extends Activity implements AdapterView.
         spinnerSize.setAdapter(adapter);
 
         setTextBoxPrice();
-
     }
 
     protected void setPizzaChoice() {
@@ -112,7 +114,6 @@ public class PizzaCustomizationActivity extends Activity implements AdapterView.
         toppings.add(Topping.Pepperoni);
 
         setTextBoxPrice();
-
     }
 
     private void setToppingsForHawaiian() {
@@ -148,7 +149,6 @@ public class PizzaCustomizationActivity extends Activity implements AdapterView.
         toppings.add(Topping.Pepperoni);
         toppings.add(Topping.Mushroom);
 
-
         setTextBoxPrice();
 
     }
@@ -166,54 +166,50 @@ public class PizzaCustomizationActivity extends Activity implements AdapterView.
 
     }
 
-   /* public void addToOrderMethod() {
-        //FINISH THIS
-        OrderProcessing.individualOrder.add(pizza);
-        spinnerSize.setSelection(0);
-        Toast.makeText(PizzaCustomizationActivity.this, "Success. Added to order.",
-                Toast.LENGTH_LONG).show();
-       // setContentView(R.layout.activity_main);
-    }
-
-    */
-
     private void setTextBoxPrice() {
         textViewTotal.setText(String.format("%.2f", pizza.price()));
     }
 
+    public void onClickAddToOrder(){
+        try {
+            OrderProcessing.individualOrder.add(pizza);
+            Toast.makeText(PizzaCustomizationActivity.this, "Success. Added to order.",
+                    Toast.LENGTH_LONG).show();
+            finish();
+        } catch (Exception e) {
+            Toast.makeText(PizzaCustomizationActivity.this, "Failed to add to order.",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
     @Override
     public void onClick(View v) {
+        if (v == addToOrder) {
+            onClickAddToOrder();
+        } else {
+            CheckBox cb = (CheckBox) v;
+            String text = cb.getText().toString();
+            String string = text.replace(" ", "").trim();
 
-       /* if (v == addToOrder){
-            addToOrderMethod();
-            return;
-        }
-
-        */
-        CheckBox cb = (CheckBox) v;
-        String text = cb.getText().toString();
-        String string = text.replace(" ","").trim();
-
-        Topping topping = Topping.valueOf(string);
-        if (toppings.size() < MAX_TOPPINGS){
-            if (cb.isChecked()) {
-                pizza.addToppings(topping);
-                toppings.add(topping);
-                setTextBoxPrice();
-            }
-        } else if (toppings.size() >= MAX_TOPPINGS){
-            if (!cb.isChecked()) {
-                pizza.removeToppings(topping);
-                toppings.remove(topping);
-                setTextBoxPrice();
+            Topping topping = Topping.valueOf(string);
+            if (toppings.size() < MAX_TOPPINGS) {
+                if (cb.isChecked()) {
+                    pizza.addToppings(topping);
+                    toppings.add(topping);
+                    setTextBoxPrice();
+                }
+            } else if (toppings.size() >= MAX_TOPPINGS) {
+                if (!cb.isChecked()) {
+                    pizza.removeToppings(topping);
+                    toppings.remove(topping);
+                    setTextBoxPrice();
+                    return;
+                }
+                Toast.makeText(PizzaCustomizationActivity.this, "Maximum of 7 toppings are allowed!",
+                        Toast.LENGTH_LONG).show();
+                cb.setChecked(false);
                 return;
             }
-            Toast.makeText(PizzaCustomizationActivity.this, "Maximum of 7 toppings are allowed!",
-                    Toast.LENGTH_LONG).show();
-            cb.setChecked(false);
-            return;
+
         }
-
-
     }
 }

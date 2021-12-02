@@ -27,7 +27,7 @@
             app:layout_constraintVertical_bias="0.141" android:contentDescription="@string/deluxe"
             android:adjustViewBounds="false" android:scaleType="centerInside"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="48dp"
-            android:layout_marginStart="48dp"/>
+            android:layout_marginStart="48dp" android:onClick="onClickDeluxe"/>
     <TextView
             android:text="@string/deluxe"
             android:layout_width="182dp"
@@ -42,7 +42,7 @@
             android:scaleType="centerInside" android:contentDescription="@string/hawaiian"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="244dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="48dp"
-            android:layout_marginStart="48dp"/>
+            android:layout_marginStart="48dp" android:onClick="onClickHawaiian"/>
     <TextView
             android:text="@string/hawaiian"
             android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
             android:scaleType="centerInside" android:contentDescription="@string/pepperoni"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="420dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="44dp"
-            android:layout_marginStart="44dp"/>
+            android:layout_marginStart="44dp" android:onClick="onClickPepperoni"/>
     <TextView
             android:text="@string/pepperoni"
             android:layout_width="wrap_content"
@@ -98,5 +98,14 @@
             android:textSize="16sp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="252dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="272dp" android:layout_marginStart="272dp"/>
+    <EditText
+            android:layout_width="162dp"
+            android:layout_height="51dp"
+            android:inputType="text|phone"
+            android:ems="10"
+            android:id="@+id/textPhoneNumber"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="129dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="209dp" android:layout_marginStart="209dp" android:hint="@string/phone_number"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
