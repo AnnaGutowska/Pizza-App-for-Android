@@ -196,6 +196,17 @@ public class PizzaCustomizationActivity extends Activity implements AdapterView.
                     pizza.addToppings(topping);
                     toppings.add(topping);
                     setTextBoxPrice();
+                } else if (!cb.isChecked()) {
+                    if (toppings.size() == 1){
+                        Toast.makeText(getApplicationContext(), "Minimum 1 topping!",
+                                Toast.LENGTH_LONG).show();
+                        cb.setChecked(true);
+                        pizza.addToppings(topping);
+                        toppings.add(topping);
+                    }
+                    pizza.removeToppings(topping);
+                    toppings.remove(topping);
+                    setTextBoxPrice();
                 }
             } else if (toppings.size() >= MAX_TOPPINGS) {
                 if (!cb.isChecked()) {
