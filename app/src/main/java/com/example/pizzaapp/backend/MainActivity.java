@@ -42,9 +42,22 @@ public class MainActivity extends AppCompatActivity {
             phoneNumber = OrderProcessing.currentPhoneNumber.get(0);
             textPhoneNumber.setText(phoneNumber);
         }
+
     }
 
-
+    //when resuming to main activity after placing an order
+    //allows user to input a new phone number
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        if (OrderProcessing.currentPhoneNumber.isEmpty()){
+            textPhoneNumber.setText("");
+            textPhoneNumber.setFocusable(true);
+            textPhoneNumber.setEnabled(true);
+            textPhoneNumber.setClickable(true);
+            textPhoneNumber.setFocusableInTouchMode(true);
+        }
+    }
 
     public void onClickDeluxe(View view) {
         if (phoneNumberHandler() == true) {
@@ -83,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickCurrentOrder(View view){
-        Intent redirect=new Intent(this,CurrentOrderActivity.class);
+        Intent redirect = new Intent(this,CurrentOrderActivity.class);
         startActivity(redirect);
     }
 
@@ -100,10 +113,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void setPhoneNum(boolean b) {
-        textPhoneNumber.setFocusableInTouchMode(b);
-        textPhoneNumber.setText("");
-    }
+
 
     private boolean isNumber(Editable phoneNumber){
        try {
