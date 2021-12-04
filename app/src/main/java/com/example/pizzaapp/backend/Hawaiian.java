@@ -1,8 +1,5 @@
 package com.example.pizzaapp.backend;
 
-import java.util.ArrayList;
-import com.example.pizzaapp.backend.Size.*;
-
 /**
  The Hawaiian class is a child class of the parent, Pizza class. This class contains the functionalities for a hawaiian
  pizza which include setting the sub-total, tax amount, and final total
@@ -25,16 +22,6 @@ public class Hawaiian extends Pizza{
 
 
     /**
-     Parameterized Constructor — The Hawaiian method calls on the pizza super class and creates a Hawaiian object with the
-     given toppings and size of the pizza.
-     * @param toppings of type ArrayList<Topping>
-     * @param size of type Size
-     */
-    public Hawaiian(ArrayList<Topping> toppings, Size size) {
-        super(toppings, size);
-    }
-
-    /**
      * This is a default constructor that we call in the PizzaMaker class to
      * create a new instance of a Hawaiian pizza.
      */
@@ -45,7 +32,9 @@ public class Hawaiian extends Pizza{
      * @param total of type double
      */
     public void setTotal(double total) {
+
         this.total = total;
+
     }
 
     /**
@@ -53,7 +42,9 @@ public class Hawaiian extends Pizza{
      * @return total amount of type double
      */
     public double getTotal(){
+
         return this.total;
+
     }
 
     /**
@@ -61,8 +52,10 @@ public class Hawaiian extends Pizza{
      (6.625%) of the hawaiian pizzas
      * @return sales tax of type double
      */
-    public double getSalesTax(){
+    public double getSalesTax() {
+
         return this.salesTax;
+
     }
 
     /**
@@ -70,7 +63,9 @@ public class Hawaiian extends Pizza{
      * @param subtotal of type double which is the the full total (subtotal + tax)
      */
     public void setTotalWithTax(double subtotal){
+
         this.subtotal = ( SALES_TAX_OF_TOTAL * subtotal );
+
     }
 
     /**
@@ -78,7 +73,9 @@ public class Hawaiian extends Pizza{
      * @return the full total (subtotal + tax) of type double
      */
     public double getTotalWithTax(){
+
         return this.subtotal;
+
     }
 
     /**
@@ -87,7 +84,9 @@ public class Hawaiian extends Pizza{
      * @param total of type double
      */
     public void setSalesTax(double total){
+
         this.salesTax = ( SALES_TAX * total );
+
     }
 
     /**
@@ -97,10 +96,11 @@ public class Hawaiian extends Pizza{
      */
     @Override
     public double price() {
+
         int numberOfExcessToppings = NONE;
 
         if (toppings.size() > DEFAULT_NUM_OF_TOPPINGS ){
-            numberOfExcessToppings = toppings.size() - 2;
+            numberOfExcessToppings = toppings.size() - DEFAULT_NUM_OF_TOPPINGS;
 
         }
 
@@ -116,6 +116,7 @@ public class Hawaiian extends Pizza{
         setTotal(total);
         setTotalWithTax(total);
         return total;
+
     }
 
     /**
@@ -124,6 +125,7 @@ public class Hawaiian extends Pizza{
      */
     @Override
     public String toString() {
+
         StringBuilder string = new StringBuilder("Hawaiian pizza,");
         String price = String.format("%,.2f",(getTotal()));
 
@@ -136,8 +138,7 @@ public class Hawaiian extends Pizza{
         string.append(price);
 
         return string.toString();
+
     }
-
-
 
 }

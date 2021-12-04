@@ -1,9 +1,5 @@
 package com.example.pizzaapp.backend;
 
-import java.util.ArrayList;
-
-import com.example.pizzaapp.backend.Size.*;
-
 /**
  The Deluxe class is a child class of the parent, Pizza class. This class contains the functionalities for a deluxe
  pizza which include setting the sub-total, tax amount, and final total
@@ -23,32 +19,17 @@ public class Deluxe extends Pizza  {
     private static final double SALES_TAX_OF_TOTAL = 1.06625;
     private static final double invalidToppingTotal = -1.00;
     private static final double extraToppingNumber = 2;
+    private static final double ZERO = 0.00;
     public double total = 0;
     public double subtotal = 0;
     public double salesTax = 0;
 
 
-
-
-
-
-    /**
-     Parameterized Constructor — The Deluxe method calls on the pizza super class and creates a Deluxe object with the
-     given toppings and size of the pizza.
-     * @param toppings of type ArrayList<Topping>
-     * @param size of type Size
-     */
-    public Deluxe(ArrayList<Topping> toppings, Size size) {
-
-        super(toppings, size);
-    }
-
     /**
      * This is a default constructor that we call in the PizzaMaker class to
      * create a new instance of a Deluxe pizza.
      */
-    public Deluxe() {
-    }
+    public Deluxe() {}
 
     /**
      The setTotal method sets the sub-total of the deluxe pizzas
@@ -57,15 +38,17 @@ public class Deluxe extends Pizza  {
     public void setTotal(double total) {
 
         this.total = total;
+
     }
 
     /**
      The getTotal method gets the sub-total of the deluxe pizzas
      * @return total amount of type double
      */
-    public double getTotal(){
+    public double getTotal() {
 
         return this.total;
+
     }
 
     /**
@@ -73,9 +56,10 @@ public class Deluxe extends Pizza  {
      (6.625%) of the deluxe pizzas
      * @param total of type double
      */
-    public void setSalesTax(double total){
+    public void setSalesTax(double total) {
 
         this.salesTax = SALES_TAX * total;
+
     }
 
     /**
@@ -83,9 +67,10 @@ public class Deluxe extends Pizza  {
      (6.625%) of the deluxe pizzas
      * @return sales tax of type double
      */
-    public double getSalesTax(){
+    public double getSalesTax() {
 
         return this.salesTax;
+
     }
 
     /**
@@ -93,7 +78,9 @@ public class Deluxe extends Pizza  {
      * @param subtotal of type double which is the the full total (subtotal + tax)
      */
     public void setTotalWithTax(double subtotal){
+
         this.subtotal = (SALES_TAX_OF_TOTAL * subtotal);
+
     }
 
     /**
@@ -101,18 +88,21 @@ public class Deluxe extends Pizza  {
      * @return the full total (subtotal + tax) of type double
      */
     public double getTotalWithTax(){
+
         return this.subtotal;
+
     }
 
     /**
      The price method overrides the method in the Pizza class and calculates the price of deluxe pizzas using the
-     size and amount of toppings.
+     size and amount of toppings. Deluxe pizza includes 5 toppings.
      * @return price of type double
      */
-    //Deluxe pizza includes 5 toppings
     @Override
     public double price() {
+
         int numberOfExcessToppings = NONE;
+
         if (toppings.size() > DEFAULT_NUM_OF_TOPPINGS) {
             numberOfExcessToppings = toppings.size() - DEFAULT_NUM_OF_TOPPINGS;
             if (numberOfExcessToppings > extraToppingNumber){
@@ -120,7 +110,7 @@ public class Deluxe extends Pizza  {
             }
         }
 
-        double total = 0;
+        double total = ZERO;
 
         if (this.getSize() == Size.small) {
             total = SMALL * SIZE_INCREASE;
@@ -135,14 +125,15 @@ public class Deluxe extends Pizza  {
         setTotal(total);
         setTotalWithTax(total);
         return total;
+
     }
 
 
     /**
      The toString method returns a String representation of the deluxe pizza with its price, size and toppings
-     @return a string comprising of all the information about a deluxe pizza
+     @return a string comprising of all the information about a deluxe pizza. The string is in the form of
+     Pizza type,ingredients,size,$price
      */
-    //Pizza type,ingredients,size,$price
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder("Deluxe pizza,");

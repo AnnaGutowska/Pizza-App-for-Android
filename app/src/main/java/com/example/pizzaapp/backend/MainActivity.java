@@ -1,9 +1,7 @@
 package com.example.pizzaapp.backend;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.text.Editable;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -12,10 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.pizzaapp.R;
 
-
-import java.io.Serializable;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -47,11 +42,14 @@ public class MainActivity extends AppCompatActivity {
         } else {
             textPhoneNumber.setFocusable(true);
         }
+
     }
 
     @Override
     public void onBackPressed(){
+
         super.onBackPressed();
+
         if (!OrderProcessing.individualOrder.isEmpty()){
             textPhoneNumber.setFocusable(false);
             textPhoneNumber.setEnabled(false);
@@ -64,11 +62,13 @@ public class MainActivity extends AppCompatActivity {
             textPhoneNumber.setClickable(true);
             textPhoneNumber.setFocusableInTouchMode(true);
         }
+
     }
 
 
 
     public void onClickDeluxe(View view) {
+
         if (phoneNumberHandler() == true) {
             if (!orderAlert()){
                 return;
@@ -81,9 +81,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(MainActivity.this, "Enter phone number", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public void onClickHawaiian(View view){
+
         if (phoneNumberHandler() == true) {
             if (!orderAlert()){
                 return;
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(MainActivity.this, "Enter phone number", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public void onClickPepperoni(View view){
@@ -112,23 +115,29 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(MainActivity.this, "Enter phone number", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public boolean orderAlert(){
+
         if (!phoneNumberHandler()){
             return false;
         }
+
         if (!OrderProcessing.phoneNumberList.contains(phoneNumber)) {
             Toast.makeText(MainActivity.this, "Starting new order", Toast.LENGTH_SHORT).show();
             return true;
         } else {
-            Toast.makeText(MainActivity.this, "Only one order per person allowed.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Only one order per person allowed.",
+                    Toast.LENGTH_SHORT).show();
             return false;
         }
+
     }
 
 
     private boolean phoneNumberHandler() {
+
         try {
             if (!textPhoneNumber.getText().equals("") & textPhoneNumber.getText().length() == TEN
                     & isNumber(textPhoneNumber.getText())) {
@@ -139,27 +148,32 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             return false;
         }
+
     }
 
     private boolean isNumber(Editable phoneNumber){
+
        try {
            Long.parseLong(String.valueOf(phoneNumber));
            return true;
        } catch (NumberFormatException e){
            return false;
        }
+
     }
 
     public void onClickCurrentOrder(View view){
+
         Intent redirect = new Intent(this,CurrentOrderActivity.class);
         startActivity(redirect);
+
     }
 
     public void onClickStoreOrders(View v){
+
         Intent intent = new Intent( this, StoreOrdersActivity.class );
         startActivity(intent);
 
     }
-
 
 }

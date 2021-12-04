@@ -1,7 +1,5 @@
 package com.example.pizzaapp.backend;
 
-import android.text.Editable;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -21,15 +19,9 @@ public class Order implements Customizable , Serializable {
      * @param phoneNumber of type String
      */
     public Order(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
-    /**
-     The setTotal method sets the phone number of a customer
-     * @param phoneNum of type String
-     */
-    public void setPhoneNumber(String phoneNum) {
-        this.phoneNumber = phoneNum;
+        this.phoneNumber = phoneNumber;
+
     }
 
     /**
@@ -37,7 +29,9 @@ public class Order implements Customizable , Serializable {
      * @return phone number of type String
      */
     public String getPhoneNumber() {
+
         return this.phoneNumber;
+
     }
 
     /**
@@ -45,7 +39,9 @@ public class Order implements Customizable , Serializable {
      * @return total of type Double
      */
     public double getTotal() {
+
         return this.total;
+
     }
 
     /**
@@ -53,7 +49,9 @@ public class Order implements Customizable , Serializable {
      * @return pizzas of type ArrayList<Pizza>
      */
     public ArrayList<Pizza> getPizzas() {
+
         return this.pizzas;
+
     }
 
 
@@ -63,6 +61,7 @@ public class Order implements Customizable , Serializable {
      * @return type boolean — true if successfully added, false otherwise
      */
     public boolean add(Object obj) {
+
         if ( obj instanceof Pizza ){
             Pizza newPizza = (Pizza) obj;
             pizzas.add(newPizza);
@@ -71,9 +70,8 @@ public class Order implements Customizable , Serializable {
         } else {
             return false;
         }
+
     }
-
-
 
     /**
      The remove method exists to remove a pizza from the pizza arraylist per order
@@ -81,6 +79,7 @@ public class Order implements Customizable , Serializable {
      * @return type boolean — true if successfully removed, false otherwise
      */
     public boolean remove(Object obj) {
+
         if ( obj instanceof Pizza ) {
             Pizza removePizza = (Pizza) obj;
 
@@ -89,21 +88,27 @@ public class Order implements Customizable , Serializable {
                 totalUpdate();
                 return true;
             }
+
         }
         return false;
+
     }
 
     /**
      The totalUpdate method exists to sum up the total of the pizzas in the pizzas arraylist
      */
     public void totalUpdate() {
+
         total = 0;
+
         if ( pizzas.size() == 0 ) {
             return;
         }
+
         for ( int i = 0; i < pizzas.size(); i++ ){
             total += pizzas.get(i).getTotal();
         }
+
     }
 
 

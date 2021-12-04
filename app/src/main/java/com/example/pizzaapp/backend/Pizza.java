@@ -20,30 +20,31 @@ public abstract class Pizza {
      * @param size of type Size
      */
     public Pizza(ArrayList<Topping> toppings, Size size) {
+
         this.toppings = toppings;
         this.size = size;
+
     }
 
     /**
      * This is a default constructor that we call to create a new instance of a pizza.
      */
-    public Pizza() {
-    }
+    public Pizza() {}
 
     /**
-     The getTotal method gets the sub-total of the pizzas
+     This abstract getTotal method is used to get the sub-total of all three kinda of pizza types
      * @return total amount of type abstract double
      */
     public abstract double getTotal();
 
     /**
-     The getSalesTax method gets the sales tax of the pizzas
+     The abstract  getSalesTax method gets the sales tax of all three kinda of pizza types
      * @return sales tax of type abstract double
      */
     public abstract double getSalesTax();
 
     /**
-     The getTotalWithTax method gets the full total of the pizzas
+     The abstract getTotalWithTax method gets the full total of all three kinda of pizza types
      * @return the full total (subtotal + tax) of type abstract double
      */
     public abstract double getTotalWithTax();
@@ -52,16 +53,20 @@ public abstract class Pizza {
      The getSize method gets the size of the pizza
      * @return size of the pizza of type Size
      */
-    public Size getSize(){
+    public Size getSize() {
+
         return this.size;
+
     }
 
     /**
      The setSize method sets the size of the pizza
      * @param size of type Size
      */
-    public void setSize(Size size){
+    public void setSize(Size size) {
+
         this.size = size;
+
     }
 
     /**
@@ -69,15 +74,19 @@ public abstract class Pizza {
      * @param topping of type Topping
      */
     public void addToppings(Topping topping) {
+
         toppings.add(topping);
+
     }
 
     /**
      The removeToppings method removes toppings from the arraylist, toppings, defined in the beginning of the class
      * @param topping of type Topping
      */
-    public void removeToppings(Topping topping){
+    public void removeToppings(Topping topping) {
+
         toppings.remove(topping);
+
     }
 
 }

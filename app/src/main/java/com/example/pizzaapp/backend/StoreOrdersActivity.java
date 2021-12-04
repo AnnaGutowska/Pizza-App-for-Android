@@ -1,40 +1,34 @@
 package com.example.pizzaapp.backend;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.pizzaapp.R;
-import com.example.pizzaapp.backend.StoreOrders;
 import android.view.View;
-
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Observable;
 
 public class StoreOrdersActivity extends AppCompatActivity {
 
     private StoreOrders storeOrders;
-    Spinner spinnerPhoneNumber;
-    Button buttonCancelOrder;
-    TextView textViewSum;
-    ListView listViewStoreOrders;
-    private final double SALES_TAX_SUM = 1.06625;
-    private final static int ZERO = 0;
+    private Spinner spinnerPhoneNumber;
+    private Button buttonCancelOrder;
+    private TextView textViewSum;
+    private ListView listViewStoreOrders;
     private ArrayList<String> orders = new ArrayList<>();
     private ArrayList<String> phoneNumbers = new ArrayList<>();
     private ArrayList<String> pizzasString = new ArrayList<>();
-    CheckedTextView checkedTextView;
-    int selectedOrderToDelete;
-    ArrayAdapter<String> adapter;
-    ArrayAdapter<String> arrayAdapter;
-    int ind = -1;
-    ArrayList<String> pizzas;
+    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<String> arrayAdapter;
+    private ArrayList<String> pizzas;
+    private final double SALES_TAX_SUM = 1.06625;
+    private final static int ZERO = 0;
+    private final static int ONE = 1;
+    private int TEMP = -1;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_orders_layout);
         listViewStoreOrders =  findViewById(R.id.listViewStoreOrders);
@@ -42,8 +36,8 @@ public class StoreOrdersActivity extends AppCompatActivity {
         textViewSum = findViewById(R.id.textViewSum);
         spinnerPhoneNumber = findViewById(R.id.spinnerPhoneNumber);
         spinnerMethod();
-
         storeOrders = new StoreOrders();
+
         if (!OrderProcessing.placedOrders.isEmpty()) {
             for (Order order : OrderProcessing.placedOrders) {
                 storeOrders.add(order);
@@ -52,14 +46,16 @@ public class StoreOrdersActivity extends AppCompatActivity {
 
         setPhoneNumberSpinner();
         setListViewOrders();
+
     }
 
     private void spinnerMethod() {
+
         spinnerPhoneNumber.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int cellnumber = parent.getSelectedItemPosition();
-                ind = position;
+                TEMP = position;
                 Order order = OrderProcessing.placedOrders.get(cellnumber);
                 order.getPizzas().toString();
                 pizzas = new ArrayList<>();
@@ -67,7 +63,8 @@ public class StoreOrdersActivity extends AppCompatActivity {
                 for (Pizza pizza : order.getPizzas()){
                     pizzas.add(pizza.toString());
                 }
-                adapter = new ArrayAdapter<String>(StoreOrdersActivity.this,
+
+                adapter = new ArrayAdapter<>(StoreOrdersActivity.this,
                         android.R.layout.simple_list_item_1, pizzas);
 
                 listViewStoreOrders.setAdapter(adapter);
@@ -77,34 +74,38 @@ public class StoreOrdersActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
+
     }
 
     public void onClickCancelButton(View view){
+
         try {
-            if (phoneNumbers.size() == 1){
-                OrderProcessing.placedOrders.remove(ind);
+            if (phoneNumbers.size() == ONE){
+                OrderProcessing.placedOrders.remove(TEMP);
                 listViewStoreOrders.setAdapter(null);
-                phoneNumbers.remove(ind);
+                phoneNumbers.remove(TEMP);
                 arrayAdapter.notifyDataSetChanged();
                 textViewSum.setText("");
                 pizzas.clear();
                 adapter.notifyDataSetChanged();
                 Toast.makeText(this, "Order cancelled", Toast.LENGTH_SHORT).show();
-            } else if (phoneNumbers.size() > 1) {
-                OrderProcessing.placedOrders.remove(ind);
-                phoneNumbers.remove(ind);
+            } else if (phoneNumbers.size() > ONE) {
+                OrderProcessing.placedOrders.remove(TEMP);
+                phoneNumbers.remove(TEMP);
                 arrayAdapter.notifyDataSetChanged();
-                spinnerPhoneNumber.setSelection(0);
+                spinnerPhoneNumber.setSelection(ZERO);
                 Toast.makeText(this, "Order cancelled", Toast.LENGTH_SHORT).show();
-            } else if (phoneNumbers.size() == 0 ){
+            } else if (phoneNumbers.size() == ZERO ){
                 throw new Exception("empty");
             }
         }catch (Exception e){
             Toast.makeText(this,"No order to cancel",Toast.LENGTH_SHORT ).show();
         }
+
     }
 
     private void setPhoneNumberSpinner() {
+
         if (!OrderProcessing.placedOrders.isEmpty()) {
             int storeOrderCount = OrderProcessing.placedOrders.size();
 
@@ -112,14 +113,17 @@ public class StoreOrdersActivity extends AppCompatActivity {
                 phoneNumbers.add(storeOrders.getOrder(i).getPhoneNumber());
             }
 
-             arrayAdapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_spinner_item, phoneNumbers);
+             arrayAdapter = new ArrayAdapter<>(this,
+                     android.R.layout.simple_spinner_item, phoneNumbers);
              spinnerPhoneNumber.setAdapter(arrayAdapter);
         }
+
     }
 
     private void setListViewOrders() {
+
         listViewStoreOrders.setAdapter(null);
+
         if (!OrderProcessing.placedOrders.isEmpty()) {
             int orderPosition = spinnerPhoneNumber.getSelectedItemPosition();
             Order order = OrderProcessing.placedOrders.get(orderPosition);
@@ -133,10 +137,10 @@ public class StoreOrdersActivity extends AppCompatActivity {
                     android.R.layout.simple_list_item_multiple_choice, pizzasString);
 
             listViewStoreOrders.setAdapter(adapter);
-
             Order selectedOrder = storeOrders.getOrder(orderPosition);
             textViewSum.setText(String.format("%.2f", thisOrderTotal(selectedOrder)));
         }
+
     }
 
 
@@ -147,7 +151,10 @@ public class StoreOrdersActivity extends AppCompatActivity {
      * @return the total for the provided order
      */
     private double thisOrderTotal(Order selectedOrder) {
+
         double total = selectedOrder.getTotal() * SALES_TAX_SUM;
         return total;
+
     }
+
 }

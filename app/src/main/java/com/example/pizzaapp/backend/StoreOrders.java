@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class StoreOrders implements Customizable {
 
     private final ArrayList<Order> orders = new ArrayList<>();
-    private final double SALES_TAX_SUM = 1.06625;
 
     public StoreOrders(){}
 
@@ -20,12 +19,14 @@ public class StoreOrders implements Customizable {
      */
     @Override
     public boolean add(Object obj){
+
         if ( obj instanceof Order ) {
             Order order = (Order) obj;
             orders.add(order);
             return true;
         }
         return false;
+
     }
 
     /**
@@ -34,6 +35,7 @@ public class StoreOrders implements Customizable {
      */
     @Override
     public boolean remove(Object obj){
+
         if ( obj instanceof Order ) {
             Order order = (Order) obj;
             if( orders.contains(order) ) {
@@ -42,6 +44,7 @@ public class StoreOrders implements Customizable {
             }
         }
         return false;
+
     }
 
     /**
@@ -49,25 +52,9 @@ public class StoreOrders implements Customizable {
      * @param i of type Integer
      */
     public Order getOrder(int i){
+
         return orders.get(i);
-    }
 
-    /**
-     The calculateSingleOrderTotal calculates the total order for the selected order
-     * @param selectedOrder of type Order
-     * @return
-     */
-    private double calculateSingleOrderTotal(Order selectedOrder) {
-        double total = selectedOrder.getTotal() * SALES_TAX_SUM;
-        return total;
-    }
-
-    /**
-     The getNumOrders method exists as a getter method to return how many orders there are in the orders arraylist
-     * @return number of orders of type Integer
-     */
-    public int getNumOrders(){
-        return orders.size();
     }
 
 

@@ -10,20 +10,21 @@ import java.util.ArrayList;
 
 public class CurrentOrderActivity extends AppCompatActivity {
 
-    TextView textCurrentPhone;
+    private TextView textCurrentPhone;
+    private ListView listViewCurrent;
+    private TextView textViewSubtotalCurrent;
+    private TextView textViewTax;
+    private TextView textViewOrderTotal;
+    private Button buttonRemovePizza;
+    private CheckedTextView checkedTextView;
+    private ArrayAdapter<String> adapter;
+    private static int selectedPizzaToDelete = -1;
+    private static final double ZERO = 0.00;
+    private static final int ZERO_INT = 0;
     private ArrayList<Pizza> pizzas =  new ArrayList<>();
     private ArrayList<String> pizzasString = new ArrayList<>();
-    private ListView listViewCurrent;
-    TextView textViewSubtotalCurrent;
-    TextView textViewTax;
-    TextView textViewOrderTotal;
-    Button buttonRemovePizza;
-    Order order;
-    String phoneNum = "";
-    CheckedTextView checkedTextView;
-    private static int selectedPizzaToDelete = -1;
-    ArrayAdapter<String> adapter;
-
+    protected Order order;
+    private String phoneNum = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
         buttonRemovePizza = findViewById(R.id.buttonRemovePizza);
 
         if (!OrderProcessing.currentPhoneNumber.isEmpty()) {
-            phoneNum = OrderProcessing.currentPhoneNumber.get(0);
+            phoneNum = OrderProcessing.currentPhoneNumber.get(ZERO_INT);
             textCurrentPhone.setText(phoneNum);
             order = new Order(phoneNum);
         }
@@ -63,29 +64,31 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
         NavUtils.navigateUpFromSameTask(this);
         super.onBackPressed();
+
     }
 
     private void listViewCurrentMethod() {
-        adapter = new ArrayAdapter<String>(CurrentOrderActivity.this,
+
+        adapter = new ArrayAdapter<>(CurrentOrderActivity.this,
                 android.R.layout.simple_list_item_multiple_choice, pizzasString);
 
         listViewCurrent.setAdapter(adapter);
 
-        listViewCurrent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                checkedTextView = ((CheckedTextView) view);
-                checkedTextView.setChecked(!checkedTextView.isChecked());
-                selectedPizzaToDelete = position;
-            }
+        listViewCurrent.setOnItemClickListener((parent, view, position, id) -> {
+            checkedTextView = ((CheckedTextView) view);
+            checkedTextView.setChecked(!checkedTextView.isChecked());
+            selectedPizzaToDelete = position;
         });
+
     }
 
     public void onClickButtonRemove(View view) {
+
         try {
-            if (textViewSubtotalCurrent.getText().equals(0.00)) {
+            if (textViewSubtotalCurrent.getText().equals(ZERO)) {
                 Toast.makeText(CurrentOrderActivity.this, "No pizzas to delete.",
                         Toast.LENGTH_LONG).show();
                 return;
@@ -105,24 +108,28 @@ public class CurrentOrderActivity extends AppCompatActivity {
             Toast.makeText(CurrentOrderActivity.this, "No pizza selected.",
                     Toast.LENGTH_LONG).show();
         }
+
     }
 
 
     private void setOrderTotal() {
-        double orderTotal = 0;
-        double zero = 0;
 
-        if (order.getPizzas().size() == 0){
-            textViewOrderTotal.setText(String.format("%.2f",zero));
+        double orderTotal = ZERO;
+
+        if (order.getPizzas().size() == ZERO_INT){
+            textViewOrderTotal.setText(String.format("%.2f",ZERO));
         }
+
         for (Pizza pizza : order.getPizzas()){
             orderTotal += pizza.getTotalWithTax();
         }
+
         textViewOrderTotal.setText(String.format("%.2f",orderTotal));
+
     }
 
     private void setTax() {
-        double tax = 0;
+        double tax = ZERO;
 
         for (Pizza pizza : order.getPizzas()){
             tax += pizza.getSalesTax();
@@ -130,14 +137,17 @@ public class CurrentOrderActivity extends AppCompatActivity {
         textViewTax.setText(String.format("%.2f",tax));
     }
 
+
     private void setSubtotal() {
-        double subtotal = 0;
+
+        double subtotal = ZERO_INT;
 
         for (Pizza pizza : order.getPizzas()){
             subtotal += pizza.getTotal();
         }
         textViewSubtotalCurrent.setText(String.format("%.2f",subtotal));
     }
+
 
     public void onPlaceOrderClick(View view) {
 
@@ -147,7 +157,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
                 return;
             }
-            phoneNum = OrderProcessing.currentPhoneNumber.get(0);
+            phoneNum = OrderProcessing.currentPhoneNumber.get(ZERO_INT);
             OrderProcessing.phoneNumberList.add(phoneNum);
             OrderProcessing.placedOrders.add(order);
             OrderProcessing.currentPhoneNumber.clear();
@@ -166,9 +176,8 @@ public class CurrentOrderActivity extends AppCompatActivity {
             Toast.makeText(CurrentOrderActivity.this, "Cart is empty.",
                     Toast.LENGTH_LONG).show();
         }
+
     }
-
-
 
 
 }

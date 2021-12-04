@@ -1,9 +1,5 @@
 package com.example.pizzaapp.backend;
 
-import java.util.ArrayList;
-
-import com.example.pizzaapp.backend.Size.*;
-
 /**
  The Pepperoni class is a child class of the parent, Pizza class. This class contains the functionalities for a
  pepperoni pizza which include setting the sub-total, tax amount, and final total
@@ -25,28 +21,19 @@ public class Pepperoni extends Pizza{
     public double salesTax = 0;
 
     /**
-     Parameterized Constructor — The Pepperoni method calls on the pizza super class and creates a pepperoni object with the
-     given toppings and size of the pizza.
-     * @param toppings of type ArrayList<Topping>
-     * @param size of type Size
-     */
-    public Pepperoni(ArrayList<Topping> toppings, Size size) {
-        super(toppings, size);
-    }
-
-    /**
      * This is a default constructor that we call in the PizzaMaker class to
      * create a new instance of a Pepperoni pizza.
      */
-    public Pepperoni() {
-    }
+    public Pepperoni() {}
 
     /**
      The setTotal method sets the sub-total of the pepperoni pizzas
      * @param total of type double
      */
     public void setTotal(double total) {
+
         this.total = total;
+
     }
 
     /**
@@ -54,7 +41,9 @@ public class Pepperoni extends Pizza{
      * @return total amount of type double
      */
     public double getTotal(){
+
         return this.total;
+
     }
 
     /**
@@ -63,7 +52,9 @@ public class Pepperoni extends Pizza{
      * @return sales tax of type double
      */
     public double getSalesTax(){
+
         return this.salesTax;
+
     }
 
     /**
@@ -71,7 +62,9 @@ public class Pepperoni extends Pizza{
      * @param subtotal of type double which is the the full total (subtotal + tax)
      */
     public void setTotalWithTax(double subtotal){
+
         this.subtotal = (SALES_TAX_OF_TOTAL * subtotal);
+
     }
 
     /**
@@ -79,7 +72,9 @@ public class Pepperoni extends Pizza{
      * @return the full total (subtotal + tax) of type double
      */
     public double getTotalWithTax(){
+
         return this.subtotal;
+
     }
 
     /**
@@ -88,7 +83,9 @@ public class Pepperoni extends Pizza{
      * @param total of type double
      */
     public void setSalesTax(double total){
+
         this.salesTax = SALES_TAX * total;
+
     }
 
     /**
@@ -98,7 +95,9 @@ public class Pepperoni extends Pizza{
      */
     @Override
     public double price() {
+
         int numberOfExcessToppings = NONE;
+
         if ( toppings.size() > DEFAULT_NUM_OF_TOPPINGS ) {
             numberOfExcessToppings = toppings.size() - DEFAULT_NUM_OF_TOPPINGS;
 
@@ -115,6 +114,7 @@ public class Pepperoni extends Pizza{
         setTotal(total);
         setTotalWithTax(total);
         return total;
+
     }
 
     /**
@@ -123,6 +123,7 @@ public class Pepperoni extends Pizza{
      */
     @Override
     public String toString() {
+
         StringBuilder string = new StringBuilder("Pepperoni pizza,");
         String price = String.format("%,.2f",(getTotal()));
 
@@ -134,6 +135,7 @@ public class Pepperoni extends Pizza{
         string.append(getSize().toString() + ",$");
         string.append(price);
         return string.toString();
+
     }
 
 
