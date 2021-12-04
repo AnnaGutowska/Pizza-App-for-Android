@@ -3,6 +3,7 @@ package com.example.pizzaapp.backend;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.text.Editable;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -24,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton buttonCurrentOrder;
     private ImageButton buttonStoreOrders;
     private EditText textPhoneNumber;
-    public String phoneNumber ="";
+    public String phoneNumber = "";
+    private static final int ZERO = 0;
     private static final int TEN = 10;
 
 
@@ -39,18 +41,23 @@ public class MainActivity extends AppCompatActivity {
         textPhoneNumber = findViewById(R.id.textPhoneNumber);
 
         if (!OrderProcessing.currentPhoneNumber.isEmpty()) {
-            phoneNumber = OrderProcessing.currentPhoneNumber.get(0);
+            phoneNumber = OrderProcessing.currentPhoneNumber.get(ZERO);
             textPhoneNumber.setText(phoneNumber);
+            textPhoneNumber.setFocusable(false);
+        } else {
+            textPhoneNumber.setFocusable(true);
         }
-
     }
 
-    //when resuming to main activity after placing an order
-    //allows user to input a new phone number
     @Override
-    public void onRestart() {
-        super.onRestart();
-        if (OrderProcessing.currentPhoneNumber.isEmpty()){
+    public void onBackPressed(){
+        super.onBackPressed();
+        if (!OrderProcessing.individualOrder.isEmpty()){
+            textPhoneNumber.setFocusable(false);
+            textPhoneNumber.setEnabled(false);
+            textPhoneNumber.setClickable(false);
+            textPhoneNumber.setFocusableInTouchMode(false);
+        } else {
             textPhoneNumber.setText("");
             textPhoneNumber.setFocusable(true);
             textPhoneNumber.setEnabled(true);
@@ -59,8 +66,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     public void onClickDeluxe(View view) {
         if (phoneNumberHandler() == true) {
+            if (!orderAlert()){
+                return;
+            }
             OrderProcessing.currentPhoneNumber.add(phoneNumber);
             textPhoneNumber.setFocusable(false);
             Intent intent = new Intent(this, PizzaCustomizationActivity.class);
@@ -73,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickHawaiian(View view){
         if (phoneNumberHandler() == true) {
+            if (!orderAlert()){
+                return;
+            }
             OrderProcessing.currentPhoneNumber.add(phoneNumber);
             textPhoneNumber.setFocusable(false);
             Intent intent = new Intent(this, PizzaCustomizationActivity.class);
@@ -84,7 +99,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickPepperoni(View view){
+
         if (phoneNumberHandler() == true) {
+            if (!orderAlert()){
+                return;
+            }
             OrderProcessing.currentPhoneNumber.add(phoneNumber);
             textPhoneNumber.setFocusable(false);
             Intent intent = new Intent(this, PizzaCustomizationActivity.class);
@@ -95,10 +114,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onClickCurrentOrder(View view){
-        Intent redirect = new Intent(this,CurrentOrderActivity.class);
-        startActivity(redirect);
+    public boolean orderAlert(){
+        if (!phoneNumberHandler()){
+            return false;
+        }
+        if (!OrderProcessing.phoneNumberList.contains(phoneNumber)) {
+            Toast.makeText(MainActivity.this, "Starting new order", Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            Toast.makeText(MainActivity.this, "Only one order per person allowed.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
+
 
     private boolean phoneNumberHandler() {
         try {
@@ -113,8 +141,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
     private boolean isNumber(Editable phoneNumber){
        try {
            Long.parseLong(String.valueOf(phoneNumber));
@@ -122,6 +148,11 @@ public class MainActivity extends AppCompatActivity {
        } catch (NumberFormatException e){
            return false;
        }
+    }
+
+    public void onClickCurrentOrder(View view){
+        Intent redirect = new Intent(this,CurrentOrderActivity.class);
+        startActivity(redirect);
     }
 
     public void onClickStoreOrders(View v){

@@ -12,7 +12,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="39dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="19dp" android:layout_marginStart="19dp" android:textSize="16sp"
-            android:textColor="#050505"/>
+            android:textColor="#050505" android:fontFamily="casual"/>
     <TextView
             android:text="@string/current_phone"
             android:layout_width="225dp"
@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="14dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="19dp" android:layout_marginStart="19dp" android:textColor="#070000"
-            android:textStyle="bold"/>
+            android:textStyle="bold" android:fontFamily="casual"/>
     <ListView
             android:layout_width="395dp"
             android:layout_height="289dp"
@@ -32,20 +32,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textViewSubtotalCurrent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="372dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="100dp" android:layout_marginStart="100dp" android:textColor="#050505"/>
+            android:layout_marginTop="368dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="100dp" android:layout_marginStart="100dp" android:textColor="#050505"
+            android:fontFamily="casual" android:textSize="16sp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textViewTax"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="400dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="100dp" android:layout_marginStart="100dp" android:textColor="#0C0C0C"/>
+            android:layout_marginLeft="100dp" android:layout_marginStart="100dp" android:textColor="#0C0C0C"
+            android:fontFamily="casual" android:textSize="16sp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textViewOrderTotal"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="392dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="308dp" android:layout_marginStart="308dp"/>
+            android:layout_marginTop="388dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="312dp" android:layout_marginStart="312dp" android:fontFamily="casual"
+            android:textColor="#673AB7" android:textStyle="bold" android:textSize="18sp"/>
     <Button
             android:text="@string/place_order"
             android:layout_width="161dp"
@@ -53,13 +56,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="428dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="208dp" android:layout_marginStart="208dp" android:onClick="onPlaceOrderClick"/>
-    <TextView
-            android:text="@string/subtotal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textViewSubtotal"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="372dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="24dp" android:layout_marginStart="24dp"/>
     <Button
             android:text="@string/remove_pizza"
             android:layout_width="159dp"
@@ -73,14 +69,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textView4"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="392dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="208dp" android:layout_marginStart="208dp" android:textColor="#4CAF50"
-            android:textStyle="bold" android:textAllCaps="false" android:textSize="16sp"/>
+            android:layout_marginTop="388dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="208dp" android:layout_marginStart="208dp" android:textColor="#673AB7"
+            android:textStyle="bold" android:textAllCaps="false" android:textSize="16sp" android:fontFamily="casual"/>
     <TextView
             android:text="@string/sales_tax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textViewSalesTax"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="400dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="20dp" android:layout_marginStart="20dp"/>
+            android:layout_marginLeft="28dp" android:layout_marginStart="28dp" android:fontFamily="casual"
+            android:textColor="#0B0A0A"/>
+    <TextView
+            android:text="@string/subtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textViewSubtotal"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="372dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp" android:layout_marginStart="32dp" android:fontFamily="casual"
+            android:textColor="#0B0A0A"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

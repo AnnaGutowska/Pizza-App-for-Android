@@ -1,17 +1,11 @@
 package com.example.pizzaapp.backend;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.SparseBooleanArray;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.*;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import com.example.pizzaapp.R;
-import android.content.DialogInterface;
-
-
 import java.util.ArrayList;
 
 public class CurrentOrderActivity extends AppCompatActivity {
@@ -65,6 +59,12 @@ public class CurrentOrderActivity extends AppCompatActivity {
             setOrderTotal();
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        NavUtils.navigateUpFromSameTask(this);
+        super.onBackPressed();
     }
 
     private void listViewCurrentMethod() {
@@ -167,6 +167,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
     }
+
 
 
 
