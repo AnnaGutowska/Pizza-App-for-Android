@@ -2,7 +2,6 @@ package com.example.pizzaapp.backend;
 
 /**
  The Customizable class exists to contains the necessary "add" and "remove" for classes that extend this Customizable class
- * @author Abia Mallick, Anna Gutowska
  */
 public interface Customizable {
 

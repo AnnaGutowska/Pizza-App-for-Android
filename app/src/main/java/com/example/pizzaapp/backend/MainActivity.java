@@ -10,7 +10,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.pizzaapp.R;
 
-
+/**
+ * The MainActivity manages functionalities within the main window which include checking the validation
+ *  of the phone number and opening various different windows to be able to customize pizzas and viewing
+ *  orders
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton buttonDeluxe;
@@ -23,7 +27,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int ZERO = 0;
     private static final int TEN = 10;
 
-
+    /**
+     The onCreate method creates the view of the app detailing what the user can do. The method
+     also checks thr validity of the user's phone number and whether they have concluded their order.
+     * @param savedInstanceState - bundle which contains the most recent data
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -45,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     The onBackPressed method is used for setting the MainActivity fields when returning
+     from a different activity. It detects whether the current order was placed and if a new one can
+     be started
+     */
     @Override
     public void onBackPressed(){
 
@@ -66,7 +79,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     The onClickDeluxe method allows for the user to click on the Deluxe pizza to open the pizza
+     customization only once they input their valid phone number.
+     @param view - the Deluxe pizza button that was clicked
+     */
     public void onClickDeluxe(View view) {
 
         if (phoneNumberHandler() == true) {
@@ -79,11 +96,16 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("message", "Deluxe Pizza");
             startActivity(intent);
         } else {
-            Toast.makeText(MainActivity.this, "Enter phone number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Enter phone number and try again", Toast.LENGTH_SHORT).show();
         }
 
     }
 
+    /**
+     The onClickHawaiian method allows for the user to click on the Hawaiian pizza to open the pizza
+     customization only once they input their valid phone number.
+     @param view - the Hawaiian pizza button that was clicked
+     */
     public void onClickHawaiian(View view){
 
         if (phoneNumberHandler() == true) {
@@ -96,11 +118,16 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("message", "Hawaiian Pizza");
             startActivity(intent);
         } else {
-            Toast.makeText(MainActivity.this, "Enter phone number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Enter phone number and try again", Toast.LENGTH_SHORT).show();
         }
 
     }
 
+    /**
+     The onClickPepperoni method allows for the user to click on the Pepperoni pizza to open the pizza
+     customization only once they input their valid phone number.
+     @param view - the Pepperoni pizza button that was clicked
+     */
     public void onClickPepperoni(View view){
 
         if (phoneNumberHandler() == true) {
@@ -113,11 +140,17 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("message", "Pepperoni Pizza");
             startActivity(intent);
         } else {
-            Toast.makeText(MainActivity.this, "Enter phone number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Enter phone number and try again", Toast.LENGTH_SHORT).show();
         }
 
     }
 
+    /**
+     The orderAlert method checks to see if the phone number entered has been entered before in the past.
+     If so, it alerts the user that this user has already placed an order but if not, users are given
+     an alert that they are starting a new order
+     * @return boolean — true if it is a new order, false otherwise
+     */
     public boolean orderAlert(){
 
         if (!phoneNumberHandler()){
@@ -135,7 +168,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     The phoneNumberHandler checks if the phone number is a valid 10 digit number
+     @return boolean — true if phone number is valid, false otherwise
+     */
     private boolean phoneNumberHandler() {
 
         try {
@@ -151,6 +187,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     The isNumber method is a way of checking whether the phone number entered is a number
+     or if it is of invalid type
+     @param phoneNumber - the number entered by the user
+     @return boolean — true if phone number can be parsed as a long int, false otherwise
+     */
     private boolean isNumber(Editable phoneNumber){
 
        try {
@@ -162,6 +204,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     The onClickCurrentOrder method allows for the user to open the current order window to see
+     their pizzas
+     @param view - the Current Order button that was clicked
+     */
     public void onClickCurrentOrder(View view){
 
         Intent redirect = new Intent(this,CurrentOrderActivity.class);
@@ -169,7 +216,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClickStoreOrders(View v){
+    /**
+     The onClickStoreOrders method allows for the user to open the store order window to see
+     the orders that have been placed
+     @param view - the Store Orders button that was clicked
+     */
+    public void onClickStoreOrders(View view){
 
         Intent intent = new Intent( this, StoreOrdersActivity.class );
         startActivity(intent);

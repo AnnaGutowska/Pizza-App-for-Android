@@ -7,7 +7,6 @@ import java.util.ArrayList;
  The Order class contains an array list of Pizzas. Each order has a unique user phone number
  and each order can be added to a Store Order. This class is able to compute the total of each
  order as well
- * @author Abia Mallick, Anna Gutowska
  */
 public class Order implements Customizable , Serializable {
     private String phoneNumber;

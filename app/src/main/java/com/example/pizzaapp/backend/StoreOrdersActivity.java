@@ -7,6 +7,10 @@ import com.example.pizzaapp.R;
 import android.view.View;
 import java.util.ArrayList;
 
+/**
+ * The StoreOrdersActivity manages functionalities within the store orders window. This includes
+ * cancelling orders as well as viewing each individual order and its total
+ */
 public class StoreOrdersActivity extends AppCompatActivity {
 
     private StoreOrders storeOrders;
@@ -25,7 +29,11 @@ public class StoreOrdersActivity extends AppCompatActivity {
     private final static int ONE = 1;
     private int TEMP = -1;
 
-
+    /**
+     * The onCreate method sets the values of the fields displayed on the screen. This includes
+     * the phone numbers of each order anf the pizzas in each order
+     * @param savedInstanceState - bundle which contains the most recent data
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState){
 
@@ -49,6 +57,11 @@ public class StoreOrdersActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * The spinnerMethod is used for setting an onItemSelectedListener for the spinner which contains
+     * the phone numbers of the orders that have been placed. The method also refreshes the list view
+     * to display the pizzas within the current order chosen from the spinner.
+     */
     private void spinnerMethod() {
 
         spinnerPhoneNumber.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -71,12 +84,22 @@ public class StoreOrdersActivity extends AppCompatActivity {
                 textViewSum.setText(String.format("%.2f", thisOrderTotal(order)));
 
             }
+
+            /**
+             * The onNothingSelected is called when no selection is made for the phone number
+             * @param parent - The AdapterView where the lack of selection happened
+             */
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
     }
 
+    /**
+     * The onClickCancel method allows for the user to remove a store order and deletes all the
+     * information about the order in the database
+     * @param view - The cancel button that was clicked
+     */
     public void onClickCancelButton(View view){
 
         try {
@@ -104,6 +127,10 @@ public class StoreOrdersActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * The setPhoneNumberSpinner method adds phone numbers to the phone numbers arraylist. The user
+     * can then use the spinner to choose a phone number to view the order
+     */
     private void setPhoneNumberSpinner() {
 
         if (!OrderProcessing.placedOrders.isEmpty()) {
@@ -120,6 +147,10 @@ public class StoreOrdersActivity extends AppCompatActivity {
 
     }
 
+    /**
+     The setListViewOrders method displays the pizzas within the selected order
+     and the corresponding subtotal
+     */
     private void setListViewOrders() {
 
         listViewStoreOrders.setAdapter(null);
@@ -147,7 +178,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
 
     /**
      * The thisOrderTotal method retrieves the total amount of the order to be able to display in the window
-     * @param selectedOrder
+     * @param selectedOrder - the order being selected
      * @return the total for the provided order
      */
     private double thisOrderTotal(Order selectedOrder) {

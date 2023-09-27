@@ -3,7 +3,6 @@ package com.example.pizzaapp.backend;
 /**
  The Hawaiian class is a child class of the parent, Pizza class. This class contains the functionalities for a hawaiian
  pizza which include setting the sub-total, tax amount, and final total
- * @author Abia Mallick, Anna Gutowska
  */
 public class Hawaiian extends Pizza{
     private static final double BASE_PRICE = 10.99;

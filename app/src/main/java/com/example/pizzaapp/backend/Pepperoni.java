@@ -3,7 +3,6 @@ package com.example.pizzaapp.backend;
 /**
  The Pepperoni class is a child class of the parent, Pizza class. This class contains the functionalities for a
  pepperoni pizza which include setting the sub-total, tax amount, and final total
- * @author Abia Mallick, Anna Gutowska
  */
 public class Pepperoni extends Pizza{
     private static final double BASE_PRICE = 8.99;

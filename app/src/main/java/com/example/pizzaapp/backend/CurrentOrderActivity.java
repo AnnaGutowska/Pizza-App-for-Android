@@ -8,6 +8,11 @@ import androidx.core.app.NavUtils;
 import com.example.pizzaapp.R;
 import java.util.ArrayList;
 
+/**
+ The CurrentOrderActivity manages functionalities within the current order window. This includes
+ viewing the pizzas within the order as well as the total. The user is allowed to remove pizzas
+ and finally place their order
+ */
 public class CurrentOrderActivity extends AppCompatActivity {
 
     private TextView textCurrentPhone;
@@ -26,6 +31,10 @@ public class CurrentOrderActivity extends AppCompatActivity {
     protected Order order;
     private String phoneNum = "";
 
+    /**
+     The onCreate method creates the initial view of the app detailing the order information
+     * @param savedInstanceState - bundle which contains the most recent data
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +71,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
     }
 
+    /**
+     The onBackPressed method is used for setting the MainActivity fields when returning
+     from this current order activity; detects whether the order was placed and if a new one can
+     be started
+     */
     @Override
     public void onBackPressed() {
 
@@ -70,6 +84,10 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
     }
 
+    /**
+     The listViewCurrentMethod method is used to list the pizza description in String form
+     of each pizza in the current order in the list view
+     */
     private void listViewCurrentMethod() {
 
         adapter = new ArrayAdapter<>(CurrentOrderActivity.this,
@@ -85,6 +103,10 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * The onClickButtonRemove method allows for the user to remove a pizza from their order
+     * @param view - the Remove Pizza button that was clicked
+     */
     public void onClickButtonRemove(View view) {
 
         try {
@@ -111,7 +133,10 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     The setOrderTotal method retrieves the order total before tax and sets the
+     correct text view to display the amount
+     */
     private void setOrderTotal() {
 
         double orderTotal = ZERO;
@@ -128,6 +153,10 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
     }
 
+    /**
+     The setTax method retrieves the tax of the order and sets the
+     correct text view to display the amount
+     */
     private void setTax() {
         double tax = ZERO;
 
@@ -137,7 +166,10 @@ public class CurrentOrderActivity extends AppCompatActivity {
         textViewTax.setText(String.format("%.2f",tax));
     }
 
-
+    /**
+     The setSubTotal method retrieves the full total of the order including tax and sets the
+     correct text view to display the amount
+     */
     private void setSubtotal() {
 
         double subtotal = ZERO_INT;
@@ -149,6 +181,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
     }
 
 
+    /**
+     *  The onPlaceOrderClick method allows for the user to place their order. It takes into account
+     *  errors such as an empty cart
+     * @param view - the Place Order button that was clicked
+     */
     public void onPlaceOrderClick(View view) {
 
         try {

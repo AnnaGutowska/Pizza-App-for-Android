@@ -3,7 +3,6 @@ package com.example.pizzaapp.backend;
 /**
  The Deluxe class is a child class of the parent, Pizza class. This class contains the functionalities for a deluxe
  pizza which include setting the sub-total, tax amount, and final total
- * @author Abia Mallick, Anna Gutowska
  */
 public class Deluxe extends Pizza  {
 

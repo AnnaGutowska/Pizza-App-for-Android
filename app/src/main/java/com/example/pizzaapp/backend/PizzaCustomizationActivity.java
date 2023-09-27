@@ -8,6 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.pizzaapp.R;
 import java.util.ArrayList;
 
+/**
+ The PizzaCustomizationActivity class allows the user to customize the selected pizza they chose.
+ They are able to remove toppings and add up to 7. The user is given alerts if they are adding too
+ many toppings. The user is able to view the price increase with each size and topping
+ increase/decrease
+ */
 public class PizzaCustomizationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,
         View.OnClickListener{
 
@@ -34,9 +40,12 @@ public class PizzaCustomizationActivity extends AppCompatActivity implements Ada
     private static final int ONE = 1;
 
 
-
-
-
+    /**
+     The onCreate method sets the fields displayed on the window upon first opening it. It
+     assigns the pizza photo, has the running total, allows users to add/remove toppings and placing
+     the order, all dependent on the type of pizza they chose.
+     @param savedInstanceState - bundle which contains the most recent data
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -60,6 +69,10 @@ public class PizzaCustomizationActivity extends AppCompatActivity implements Ada
 
     }
 
+    /**
+     The setPizzaChoice method displays the correct image of the pizza selected. It also
+     initializes the default list of toppings per pizza and initializes the pizza to size small
+     */
     protected void setPizzaChoice() {
 
         if (temporary.getText().equals("Deluxe Pizza")){
@@ -81,6 +94,10 @@ public class PizzaCustomizationActivity extends AppCompatActivity implements Ada
 
     }
 
+    /**
+     The findToppings method allows for the user to add/remove toppings by assigning onClickListeners
+      to all the toppings on screen
+     */
     private void findToppings() {
 
         CheckBoxBlackOlives = findViewById(R.id.checkBoxBlackOlives);
@@ -108,6 +125,9 @@ public class PizzaCustomizationActivity extends AppCompatActivity implements Ada
 
     }
 
+    /**
+     The setToppingsForPepperoni sets the correct default topping for the Pepperoni pizza, pepperoni.
+     */
     private void setToppingsForPepperoni() {
 
         CheckBoxPepperoni.setChecked(true);
@@ -117,6 +137,10 @@ public class PizzaCustomizationActivity extends AppCompatActivity implements Ada
 
     }
 
+    /**
+     The setToppingsForHawaiian sets the correct toppings for the Hawaiian pizza. This includes
+     Pineapple and Cheese.
+     */
     private void setToppingsForHawaiian() {
 
         CheckBoxPineapple.setChecked(true);
@@ -129,6 +153,10 @@ public class PizzaCustomizationActivity extends AppCompatActivity implements Ada
 
     }
 
+    /**
+     The setToppingsForDeluxe sets the correct toppings for the Deluxe pizza. This includes
+     Sausage, Onion, Green Pepper, Pepperoni, Mushroom.
+     */
     private void setToppingsForDeluxe() {
 
         CheckBoxGreenPepper.setChecked(true);
@@ -150,7 +178,14 @@ public class PizzaCustomizationActivity extends AppCompatActivity implements Ada
 
     }
 
-
+    /**
+     * This onItemSelected method updates the pizza's size and price according to the size
+     * selected by the user
+     * @param parent - The AdapterView where the selection happened
+     * @param view - The size choice within the AdapterView that was clicked
+     * @param position - The position of the view in the adapter
+     * @param id - The row id of the item that is selected
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -160,15 +195,27 @@ public class PizzaCustomizationActivity extends AppCompatActivity implements Ada
 
     }
 
+    /**
+     * The onNothingSelected is called when no selection is made for the size
+     * @param parent - The AdapterView where the lack of selection happened
+     */
     @Override
     public void onNothingSelected(AdapterView<?> parent) {}
 
+    /**
+     The setTextBoxPrice method allows for the running total to be displayed as the user is
+     customizing their order
+     */
     private void setTextBoxPrice() {
 
         textViewTotal.setText(String.format("%.2f", pizza.price()));
 
     }
 
+    /**
+     The onClickAddtoOrder method alerts the user that their pizza has been added to the order
+     after they click the add to order button.
+     */
     public void onClickAddToOrder(){
 
         try {
@@ -183,6 +230,12 @@ public class PizzaCustomizationActivity extends AppCompatActivity implements Ada
 
     }
 
+    /**
+     The onClick method allows allows for the user to customize their pizza using the checkboxes.
+     It also ensures there is a minimum of one topping and a maximum of seven toppings. Also allows the
+     user to add the pizza to their order upon clicking the button.
+     @param view - the button that was clicked
+     */
     @Override
     public void onClick(View view) {
 
